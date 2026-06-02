@@ -33,6 +33,7 @@
       luogo: target.dataset.luogo,
       dalle: target.dataset.dalle,
       alle: target.dataset.alle,
+      descrizione: target.dataset.descrizione,
       rowNumber: Number(target.dataset.rowNumber) || undefined,
       slotId: Number(target.dataset.slotId) || undefined
     };
@@ -85,6 +86,7 @@
           luogo: entry.luogo,
           dateLabel: capitalize(fullDateFormatter.format(date)),
           maxVolunteers: maxSlots,
+          descrizione: entry.descrizione ?? "",
           slots: []
         });
       }
@@ -96,6 +98,7 @@
         slotId: entry.ID ?? entry.id,
         dalle: entry.dalle ?? "",
         alle: entry.alle ?? "",
+        descrizione: entry.descrizione ?? "",
         volunteers,
         maxSlots,
         firstEmptySlotIndex
@@ -137,6 +140,9 @@
       const subtitle = document.createElement("div");
       subtitle.className = "location-date";
       subtitle.textContent = group.dateLabel;
+      if (group.descrizione) {
+        subtitle.textContent += ` - ${group.descrizione}`;
+      }
 
       header.appendChild(title);
       header.appendChild(subtitle);
@@ -181,6 +187,7 @@
           td.dataset.luogo = group.luogo;
           td.dataset.dalle = slot.dalle ?? "";
           td.dataset.alle = slot.alle ?? "";
+          td.dataset.descrizione = slot.descrizione ?? "";
 
           if (slot.rowNumber) {
             td.dataset.rowNumber = slot.rowNumber;
@@ -229,6 +236,7 @@
                   luogo: group.luogo,
                   dalle: slot.dalle,
                   alle: slot.alle,
+                  descrizione: slot.descrizione,
                   rowNumber: slot.rowNumber,
                   slotId: slot.slotId
                 })
@@ -266,6 +274,7 @@
         luogo: slotPayload.luogo,
         dalle: slotPayload.dalle,
         alle: slotPayload.alle,
+        descrizione: slotPayload.descrizione,
         rowNumber: slotPayload.rowNumber,
         slotId: slotPayload.slotId
       })
