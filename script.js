@@ -140,12 +140,18 @@
       const subtitle = document.createElement("div");
       subtitle.className = "location-date";
       subtitle.textContent = group.dateLabel;
-      if (group.descrizione) {
-        subtitle.textContent += ` - ${group.descrizione}`;
-      }
+
 
       header.appendChild(title);
       header.appendChild(subtitle);
+
+      if (group.descrizione) {
+        const description = document.createElement("div");
+        description.className = "location-description";
+        description.textContent = group.descrizione;
+        header.appendChild(description);
+      }
+
       section.appendChild(header);
 
       const wrapper = document.createElement("div");

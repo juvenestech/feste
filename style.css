@@ -118,6 +118,11 @@ main {
   text-transform: capitalize;
 }
 
+.location-description {
+  font-size: 15px;
+  color: var(--color-on-surface-muted);
+}
+
 .table-wrapper {
   background: var(--color-surface-elevated);
   border-radius: 20px;
