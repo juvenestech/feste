@@ -33,7 +33,8 @@
       luogo: target.dataset.luogo,
       dalle: target.dataset.dalle,
       alle: target.dataset.alle,
-      descrizione: target.dataset.descrizione,
+      descrizione: target.dataset.descrizione || "",
+      sottotitolo: target.dataset.sottotitolo || "",
       rowNumber: Number(target.dataset.rowNumber) || undefined,
       slotId: Number(target.dataset.slotId) || undefined
     };
@@ -87,6 +88,7 @@
           dateLabel: capitalize(fullDateFormatter.format(date)),
           maxVolunteers: maxSlots,
           descrizione: entry.descrizione ?? "",
+          sottotitolo: target.dataset.sottotitolo || "",
           slots: []
         });
       }
@@ -99,6 +101,7 @@
         dalle: entry.dalle ?? "",
         alle: entry.alle ?? "",
         descrizione: entry.descrizione ?? "",
+        sottotitolo: entry.sottotitolo ?? "",
         volunteers,
         maxSlots,
         firstEmptySlotIndex
@@ -140,7 +143,9 @@
       const subtitle = document.createElement("div");
       subtitle.className = "location-date";
       subtitle.textContent = group.dateLabel;
-
+      if (group.sottotitolo) {
+        subtitle.textContent = group.sottotitolo;
+      }
 
       header.appendChild(title);
       header.appendChild(subtitle);
@@ -194,6 +199,7 @@
           td.dataset.dalle = slot.dalle ?? "";
           td.dataset.alle = slot.alle ?? "";
           td.dataset.descrizione = slot.descrizione ?? "";
+          td.dataset.sottotitolo = slot.sottotitolo ?? "";
 
           if (slot.rowNumber) {
             td.dataset.rowNumber = slot.rowNumber;
@@ -243,6 +249,7 @@
                   dalle: slot.dalle,
                   alle: slot.alle,
                   descrizione: slot.descrizione,
+                  sottotitolo: slot.sottotitolo,
                   rowNumber: slot.rowNumber,
                   slotId: slot.slotId
                 })
@@ -281,6 +288,7 @@
         dalle: slotPayload.dalle,
         alle: slotPayload.alle,
         descrizione: slotPayload.descrizione,
+        sottotitolo: slotPayload.sottotitolo,
         rowNumber: slotPayload.rowNumber,
         slotId: slotPayload.slotId
       })
