@@ -88,7 +88,7 @@
           dateLabel: capitalize(fullDateFormatter.format(date)),
           maxVolunteers: maxSlots,
           descrizione: entry.descrizione ?? "",
-          sottotitolo: target.dataset.sottotitolo || "",
+          sottotitolo: entry.sottotitolo || "",
           slots: []
         });
       }
