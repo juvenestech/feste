@@ -114,6 +114,7 @@ main {
 
 .location-date {
   font-size: 15px;
+  font-weight: 600;
   color: var(--color-on-surface-muted);
   text-transform: capitalize;
 }
